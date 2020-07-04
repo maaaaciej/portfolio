@@ -27,44 +27,36 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-dc9ce813837b716b4aed.js"
+    "url": "webpack-runtime-8c6f2d9bf80ee5531f54.js"
   },
   {
-    "url": "framework-3bef749eac301960e51a.js"
+    "url": "framework-868c53fff4771b0bde98.js"
   },
   {
-    "url": "app-934db8a7be5366e60ae4.js"
+    "url": "app-84e86ee197271b873524.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "dac35d0270403c9e47b0e5e633da275c"
+    "revision": "3c334ca8fbbde38cc46508be5ad2f588"
   },
   {
-    "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-2a242c05cade058abd28.js"
-  },
-  {
-    "url": "page-data/offline-plugin-app-shell-fallback/page-data.json",
-    "revision": "43232b01cc861c0701a3ece4bd67720b"
-  },
-  {
-    "url": "page-data/app-data.json",
-    "revision": "10b9907bd7b0e9c11780a0e469bab870"
+    "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-7c31e2436cade51cbcda.js"
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "eab2fff2a1bad298512dd415254a2e93"
+    "revision": "a4aff537d11c11b5a663de6094eeda6b"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
 workbox.routing.registerRoute(/(\.js$|\.css$|static\/)/, new workbox.strategies.CacheFirst(), 'GET');
 workbox.routing.registerRoute(/^https?:.*\page-data\/.*\/page-data\.json/, new workbox.strategies.StaleWhileRevalidate(), 'GET');
+workbox.routing.registerRoute(/^https?:.*\/page-data\/app-data\.json/, new workbox.strategies.StaleWhileRevalidate(), 'GET');
 workbox.routing.registerRoute(/^https?:.*\.(png|jpg|jpeg|webp|svg|gif|tiff|js|woff|woff2|json|css)$/, new workbox.strategies.StaleWhileRevalidate(), 'GET');
 workbox.routing.registerRoute(/^https?:\/\/fonts\.googleapis\.com\/css/, new workbox.strategies.StaleWhileRevalidate(), 'GET');
 
 /* global importScripts, workbox, idbKeyval */
-
-importScripts(`idb-keyval-iife.min.js`)
+importScripts(`idb-keyval-3.2.0-iife.min.js`)
 
 const { NavigationRoute } = workbox.routing
 
@@ -140,12 +132,12 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   lastNavigationRequest = event.request.url
 
   let { pathname } = new URL(event.request.url)
-  pathname = pathname.replace(new RegExp(`^/portfolio`), ``)
+  pathname = pathname.replace(new RegExp(`^`), ``)
 
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/portfolio/app-934db8a7be5366e60ae4.js`))) {
+  if (!resources || !(await caches.match(`/app-84e86ee197271b873524.js`))) {
     return await fetch(event.request)
   }
 
@@ -158,7 +150,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
     }
   }
 
-  const offlineShell = `/portfolio/offline-plugin-app-shell-fallback/index.html`
+  const offlineShell = `/offline-plugin-app-shell-fallback/index.html`
   const offlineShellWithKey = workbox.precaching.getCacheKeyForURL(offlineShell)
   return await caches.match(offlineShellWithKey)
 })
