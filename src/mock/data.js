@@ -37,6 +37,15 @@ export const projectsData = [
   },
   {
     id: nanoid(),
+    img: 'blog.png',
+    title: 'Simple Blog',
+    info: 'A simple blog, where I can write and upload new posts using markdown. Yes, it is supposed to be this simple, I wanted a completely blank slate with just the things I actually need in a blog.',
+    info2: 'Made using Gatsby and GraphQL.',
+    url: 'https://maciejblog.netlify.app/',
+    repo: 'https://github.com/maaaaciej/blog', // if no repo, the button will not show up
+  },
+  {
+    id: nanoid(),
     img: 'dadjoke.png',
     title: 'Dad Joke API',
     info: 'A dad joke website, that returns a random dad joke each time you access it. I have also made an API to go with it, so that anyone can make their own version of it.',
