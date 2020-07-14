@@ -21,7 +21,7 @@ export const aboutData = {
   paragraphOne: "Hi! I'm Maciej, an Oslo-based front end developer!",
   paragraphTwo: "I've been a tech-head for all my life, dissecting any electronic device I could land my hands on, to see how it worked. This passion transfered over to software, and I started coding at 11, trying to deconstruct webpages to see how they worked.",
   paragraphThree: "I specialize in HTML, CSS and JavaScript, React and Redux, and I pick up any new libraries easily.",
-  resume: 'https://www.dropbox.com/s/7nblds9gxuuhr03/MaciejOstrowskiResume.pdf?dl=0', // if no resume, the button will not show up
+  resume: 'https://www.dropbox.com/s/uj0c3p2ixk3eaag/MaciejOstrowskiResume.pdf', // if no resume, the button will not show up
 };
 
 // PROJECTS DATA
